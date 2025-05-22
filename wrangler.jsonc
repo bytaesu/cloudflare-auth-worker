@@ -1,0 +1,23 @@
+/**
+ * Configuration file for Cloudflare Workers.
+ * If you update this file or `.dev.vars`, regenerate the types with:
+ *
+ *    pnpm cf-typegen
+ *
+ * Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cloudflare-auth-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-05-22",
+  "minify": true,
+
+  // Local development
+  "dev": {
+    "local_protocol": "http",
+    "upstream_protocol": "https",
+    "ip": "localhost",
+    "port": 8801,
+  },
+}

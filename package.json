@@ -1,0 +1,21 @@
+{
+  "name": "cloudflare-auth-worker",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,jsonc}\""
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "better-auth": "^1.2.8",
+    "drizzle-orm": "^0.43.1",
+    "hono": "^4.7.10"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "prettier": "^3.5.3",
+    "drizzle-kit": "^0.31.1",
+    "wrangler": "^4.16.1"
+  }
+}

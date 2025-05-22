@@ -1,0 +1,7 @@
+.expo
+.next
+dist
+docker*
+apps/**/out
+node_modules
+package-lock.json
