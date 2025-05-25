@@ -2,10 +2,10 @@
   "name": "cloudflare-auth-worker",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify",
+    "deploy": "wrangler secret bulk .dev.vars.production && wrangler deploy --minify",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,jsonc}\"",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
-    "better-auth-typegen": "pnpm dlx @better-auth/cli@latest generate --config ./better-auth.config.ts --output ./src/db/schema.ts"
+    "better-auth:generate": "pnpm dlx @better-auth/cli@latest generate --config ./better-auth.config.ts --output ./src/db/schema.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
