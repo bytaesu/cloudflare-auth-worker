@@ -8,29 +8,15 @@ import { betterAuthOptions } from './options';
  * Better Auth Instance
  */
 export const auth = (env: CloudflareBindings): ReturnType<typeof betterAuth> => {
-  const { DATABASE_URL, BETTER_AUTH_URL, BETTER_AUTH_SECRET } = env;
-
-  if (!DATABASE_URL || !BETTER_AUTH_URL || !BETTER_AUTH_SECRET) {
-    const missing = [
-      !DATABASE_URL && 'DATABASE_URL',
-      !BETTER_AUTH_URL && 'BETTER_AUTH_URL',
-      !BETTER_AUTH_SECRET && 'BETTER_AUTH_SECRET',
-    ]
-      .filter(Boolean)
-      .join(', ');
-
-    throw new Error(`Missing required environment variables: ${missing}`);
-  }
-
-  const sql = neon(DATABASE_URL);
+  const sql = neon(env.DATABASE_URL);
   const db = drizzle(sql);
 
   return betterAuth({
     ...betterAuthOptions,
-    baseURL: BETTER_AUTH_URL,
-    secret: BETTER_AUTH_SECRET,
-    database: drizzleAdapter(db, {
-      provider: 'pg',
-    }),
+    database: drizzleAdapter(db, { provider: 'pg' }),
+    baseURL: env.BETTER_AUTH_URL,
+    secret: env.BETTER_AUTH_SECRET,
+
+    // Additional options that depend on env ...
   });
 };
