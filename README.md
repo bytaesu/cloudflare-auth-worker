@@ -59,3 +59,10 @@ BETTER_AUTH_URL=<YOUR_WORKER_URL>
 BETTER_AUTH_SECRET=<YOUR_BETTER_AUTH_SECRET>
 DATABASE_URL=<YOUR_DATABASE_URL>
 ```
+
+## In closing
+
+This project only provides a **starting point**, not a production-ready setup. For real-world use, you’ll need to configure things like CORS, rate limiting, plugins, etc. I’ve kept the setup minimal and simple, following official docs, so you can easily customize it to fit your needs.
+
+The guide for this repository is available at:  
+https://hono.dev/examples/better-auth-on-cloudflare
