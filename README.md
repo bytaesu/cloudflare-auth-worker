@@ -1,11 +1,19 @@
 # Cloudflare Auth Worker
 
-A TypeScript-based lightweight authentication service, built with:
+A TypeScript-based lightweight authentication service optimized for Cloudflare Workers, built with:
 
 - [Hono](https://hono.dev)
 - [Better Auth](https://better-auth.com)
 - [Drizzle ORM](https://orm.drizzle.team)
 - [Postgres with Neon](https://neon.tech)
+
+This setup offers the following benefits:
+
+- Efficient development through integration of Cloudflare CLI, Better Auth CLI, and Drizzle CLI.
+- Seamless transition between development and production environments.
+- Apply changes consistently using a script.
+
+You can extend this setup with custom scripts tailored to your workflow. That’s how I use it as well.
 
 ## Environment Variables
 
@@ -20,8 +28,8 @@ Used locally by CLI tools such as:
 
 ```dotenv
 BETTER_AUTH_URL=http://localhost:8801
-BETTER_AUTH_SECRET=h949f861d0e4caa6b89e91b4ce51c84292f1aec2aa1f4b86332a18b1af75a538
-DATABASE_URL="postgresql://<user>:<password>@<endpoint_hostname>.neon.tech:<port>/<dbname>?sslmode=require"
+BETTER_AUTH_SECRET=<YOUR_BETTER_AUTH_SECRET>
+DATABASE_URL=<YOUR_DATABASE_URL>
 ```
 
 ### .dev.vars
@@ -34,8 +42,8 @@ pnpm run dev  # Runs `wrangler dev`, loading variables from .dev.vars
 
 ```dotenv
 BETTER_AUTH_URL=http://localhost:8801
-BETTER_AUTH_SECRET=h949f861d0e4caa6b89e91b4ce51c84292f1aec2aa1f4b86332a18b1af75a538
-DATABASE_URL="postgresql://<user>:<password>@<endpoint_hostname>.neon.tech:<port>/<dbname>?sslmode=require"
+BETTER_AUTH_SECRET=<YOUR_BETTER_AUTH_SECRET>
+DATABASE_URL=<YOUR_DATABASE_URL>
 ```
 
 ### .dev.vars.production
@@ -47,7 +55,7 @@ pnpm run deploy  # Runs `wrangler secret bulk .dev.vars.production && wrangler d
 ```
 
 ```dotenv
-BETTER_AUTH_URL=<your-worker-url>
-BETTER_AUTH_SECRET=h949f861d0e4caa6b89e91b4ce51c84292f1aec2aa1f4b86332a18b1af75a538
-DATABASE_URL="postgresql://<user>:<password>@<endpoint_hostname>.neon.tech:<port>/<dbname>?sslmode=require"
+BETTER_AUTH_URL=<YOUR_WORKER_URL>
+BETTER_AUTH_SECRET=<YOUR_BETTER_AUTH_SECRET>
+DATABASE_URL=<YOUR_DATABASE_URL>
 ```
