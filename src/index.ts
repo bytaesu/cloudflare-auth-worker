@@ -6,8 +6,6 @@ const app = new Hono<{ Bindings: CloudflareBindings }>();
 /**
  * Mounts Better Auth on all GET and POST requests under `/api/**`.
  * Ensure its `basePath` aligns with this route.
- *
- * Docs: https://www.better-auth.com/docs/plugins/open-api
  */
 app.on(['GET', 'POST'], '/api/**', (c) => {
   return auth(c.env).handler(c.req.raw);
