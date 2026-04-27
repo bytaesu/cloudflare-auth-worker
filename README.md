@@ -1,4 +1,9 @@
 > [!NOTE]
+> I'll update this with a much better example soon 👀
+
+---
+
+> [!NOTE]
 > This repository is featured on the official Hono [website](https://hono.dev/examples/better-auth-on-cloudflare).  
 > For more information, please refer to the official Better Auth or Hono documentation.  
 > If you encounter any issues or have questions, feel free to open an issue.
