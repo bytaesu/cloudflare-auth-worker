@@ -1,23 +1,33 @@
-/**
- * Configuration file for Cloudflare Workers.
- * If you update this file or `.dev.vars`, regenerate the types with:
- *
- *    pnpm cf-typegen
- *
- * Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
- */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cloudflare-auth-worker",
   "main": "src/index.ts",
-  "compatibility_date": "2025-05-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_date": "2026-05-14",
   "minify": true,
 
-  // Local development
   "dev": {
     "local_protocol": "http",
     "upstream_protocol": "https",
     "ip": "localhost",
-    "port": 8801,
+    "port": 3333,
+    "inspector_port": 9223,
   },
+
+  "workers_dev": false,
+  "routes": [
+    {
+      "custom_domain": true,
+      "pattern": "<your-production-domain>",
+    },
+  ],
+
+  "d1_databases": [
+    {
+      "binding": "D1",
+      "database_name": "<your-database-name>",
+      "database_id": "<your-database-id>",
+      "remote": false, // flip to `true` only when applying migrations to remote database
+    },
+  ],
 }

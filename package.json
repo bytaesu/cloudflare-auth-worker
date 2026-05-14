@@ -1,22 +1,25 @@
 {
   "name": "cloudflare-auth-worker",
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler secret bulk .dev.vars.production && wrangler deploy --minify",
-    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,jsonc}\"",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
-    "better-auth:generate": "pnpm dlx @better-auth/cli@latest generate --config ./better-auth.config.ts --output ./src/db/schema.ts"
+    "deploy": "wrangler deploy --minify",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "lint:github": "oxlint --format=github",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "cf:types": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.0.1",
-    "better-auth": "^1.3.7",
-    "drizzle-orm": "^0.44.4",
-    "hono": "^4.9.2"
+    "better-auth": "^1.6.11",
+    "hono": "^4.12.18"
   },
   "devDependencies": {
-    "@types/node": "^22.17.2",
-    "drizzle-kit": "^0.31.4",
-    "prettier": "^3.6.2",
-    "wrangler": "^4.30.0"
-  }
+    "lefthook": "^2.1.6",
+    "oxfmt": "^0.49.0",
+    "oxlint": "^1.64.0",
+    "wrangler": "^4.90.1"
+  },
+  "packageManager": "pnpm@11.1.1"
 }
